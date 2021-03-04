@@ -21,20 +21,29 @@ const Card = (props) => {
 class Container extends React.Component{
   constructor (props){
     super(props);
-    console.log(mock_data)
-    debugger;
+    this.state = {
+      query: ""
+    }
+    this.onSearch = this.onSearch.bind(this);
+  }
+  onSearch(e){
+    this.setState({query: e.target.value})
   }
   render() {
+    const query = this.state.query.toLowerCase();
     debugger;
     return (<React.Fragment>
       
       {/* Search */}
-      <input />
+      <input value={this.state.query} onChange={this.onSearch} />
       
       
       {/* List */}
       {
-        mock_data.map(item => <Card {...item}/>)
+        mock_data.filter(item => (item.name.match(new RegExp(query,"gi")) || item.description.match(new RegExp(query,"gi")))).map(item => {
+          item.name.replaceAll(new RegExp(query,"gi"),function(q) { return <b>{q}</b> });
+          item.description.replaceAll(new RegExp(query,"gi"),function(q) { return (<b>{q}</b>) }); 
+          return <Card {...item}  />})
       }
       
       {/* <Table /> */}
