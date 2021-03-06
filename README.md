@@ -1,7 +1,6 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+## Clone project
+## install dependencies
+npm install
 ## Available Scripts
 
 In the project directory, you can run:
@@ -14,57 +13,53 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+For running the testcases, you can run:
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Assignment:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Responsive layout
+The grid should show 3 columns on Desktop screens, 2 on Tablet screens, and 1 on Mobile screens.
+The table below the grid should always have the same width as the grid. You're free to decide how to arrange columns inside the table
+Use the mobile-first approach for designing the layout.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Search
+Use the attached `mock_data.json` as seed data and implement the search logic in-memory.
+The input text should be searched for in the fields `title` and `description`.
+By default (i.e. for no search term) all posts should match the query.
+Support exact match when the query contains a phrase within double quotes (like Google does)
 
-### `npm run eject`
+Examples:
+Given the following posts:
+Post 1 with title: "The Lord of the Rings: The Return of the King".
+Post 2 with title: "The Lion King".
+Search Term
+Post 1 matches?
+Post 2 matches?
+the king
+Yes
+Yes
+"the king"
+Yes
+No
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Sort
+Sort options: title, dateLastEdited
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+State Management
+The Grid content should be paginated matching the search and sort criteria
+The Table should contain all the matching records matching the search and sort criteria
+UI state should be preserved when the web-page is refreshed
+i.e. data loaded on refresh should be as per the value entered in the 'Search' field and the value selected for 'Sort by'. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Other requirements
+Use a component-oriented view library for implementation (Angular 10+ preferred).
+Don't use any 3rd-party styling/component framework.
+Write meaningful unit tests where appropriate.
+Provide a git repo link containing the project files.
+We'd like to know your commit habits.
+If you're used to rebasing to make the commits history easy to understand, it's ok to do so for this assignment!
+Share instructions for running the app and executing the tests so that we can evaluate it without delay.
