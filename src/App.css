@@ -144,6 +144,9 @@
   --input-focus-h: 245;
   --input-focus-s: 100%;
   --input-focus-l: 42%;
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
 }
 
 body {
@@ -185,4 +188,68 @@ body {
 .input:not(textarea) {
   line-height: 1;
   height: 2.25rem;
+}
+
+.pagination {
+  padding-left: 0
+}
+
+.pagination ul {
+  display: inline-block;
+}
+
+.pagination li {
+  display: inline-block;
+  background: white;
+  border: 1px solid rgba(34, 36, 38, .1);
+  cursor: pointer;
+  padding: 8px 0px;
+}
+
+.pagination li>a {
+  padding: 8px 16px;
+}
+
+.pagination li.active {
+  background: hsla(var(--input-focus-h));
+}
+
+.pagination li.disabled {
+  background: rgba(34, 36, 38, .1);
+  cursor: no-drop;
+}
+
+.selectfield {
+  float: right;
+}
+
+select {
+  font-size: 16px;
+  font-size: Max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  transition: 180ms box-shadow ease-in-out;
+}
+
+table {
+  background-color: white;
+}
+
+table td {
+  border: 1px solid var(--input-border);
+  padding: 8px;
+}
+
+table th {
+  background-color: var(--input-border);
+  padding: 8px;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
 }
