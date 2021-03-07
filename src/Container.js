@@ -13,7 +13,9 @@ export const match = (item, query) => {
   while(ele = strictCheckArr.next().value) {
     ele = ele[0].substr(1,ele[0].length -2)
     strictCheckArrVals.push(ele)
-    if(item.name.match(new RegExp(ele,"gi") || item.description.match(new RegExp(ele,"gi")))){ smatched=true }  
+    if(item.name.match(new RegExp(ele,"gi")) || item.description.match(new RegExp(ele,"gi"))){ 
+      smatched=true 
+    }  
   }
   checkArr.forEach(ele => {
     if(!item.name.match(new RegExp(ele.toLowerCase(),"gi")) && !item.description.match(new RegExp(ele.toLowerCase(),"gi"))){ matched=false }
@@ -34,6 +36,22 @@ export const match = (item, query) => {
       }
     }
 }
+
+const getDeviceType = () => {
+  const ua = navigator.userAgent;
+  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+    return "tablet";
+  }
+  if (
+    /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+      ua
+    )
+  ) {
+    return "mobile";
+  }
+  return "desktop";
+};
+
 const Card = (props) => {
     return (
     <div className="card">
@@ -65,6 +83,7 @@ class Container extends React.Component{
       query: localStorage.getItem('query') || "",
       offset: 0,
       limit: 6,
+      deviceType: getDeviceType(),
       sortBy: localStorage.getItem('sortBy') || "dateLastEdited"
     }
     this.onSearch = this.onSearch.bind(this);
@@ -151,16 +170,16 @@ class Container extends React.Component{
         <tr>
             <th>Name</th>
             <th>Image</th>
-            <th>Description</th>
+            { this.state.deviceType=="desktop" && <th>Description</th> }
             <th>DateLastEdited</th>
         </tr>
         </thead>
         <tbody>
-        {this.state.filteredData.map((card)=>{
-              return <tr className="row">
+        {this.state.filteredData.map((card,i)=>{
+              return <tr className="row" key={"t"+i} onClick={()=> this.state.deviceType=="mobile" && alert(card.description)}>
+              <td><img src={card.image} width="64"/></td>
               <td>{card.name}</td>
-              <td>{card.image}</td>
-              <td>{card.description}</td>
+              { this.state.deviceType=="desktop" && <td>{card.description}</td> }
               <td>{moment(card.dateLastEdited).format("MMMM Do YYYY, h:mm:ss a")}</td> 
             </tr>
             })}
